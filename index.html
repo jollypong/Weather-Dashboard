@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/style/reset.css" />
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header>Weather Dashboard</header>
+    <section id = "searchContainer" class = "col col-3">
+        <form id = "searchBar" class="col-auto border-bottom-5">
+            <label class="visually-hidden" for="searchCity">Search for a City</label>
+            <input type="text" class="form-control" id="searchCity" placeholder="City Name">
+            <button id = "searchButton" type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div id = "searchHistory" class = "">
+            <div id ="historyContent" class = ""></div>
+        </div>
+    </section>
+
+    <div id = "infoContainer" class = "col col-9">
+        <h2 id = "infoDisplay" class = "">Showing weather information for: 
+            <span id ="cityWeather"></span>
+        </h2>
+        <div id = "cityWeather"></div>
+            <p></p>
+
+        <div id = "5dayForecast" class = "">5-Day Forecast:</div>
+            <div id = "5days" class = ""></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src ="./assets/script/script.js"></script>
+</body>
+</html>
