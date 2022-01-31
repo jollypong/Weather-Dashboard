@@ -4,34 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/style/reset.css" />
     <link rel="stylesheet" href="assets/style/style.css" />
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header>Weather Dashboard</header>
-    <section id = "searchContainer" class = "col col-3">
-        <form id = "searchBar" class="col-auto border-bottom-5">
-            <label class="visually-hidden" for="searchCity">Search for a City</label>
-            <input type="text" class="form-control" id="searchCity" placeholder="City Name">
-            <button id = "searchButton" type="submit" class="btn btn-primary">Search</button>
-        </form>
-        <div id = "searchHistory" class = "">
-            <div id ="historyContent" class = ""></div>
-        </div>
-    </section>
-
-    <div id = "infoContainer" class = "col col-9">
-        <h2 id = "infoDisplay" class = "">Showing weather information for: 
-            <span id ="cityWeather"></span>
-        </h2>
-        <div id = "cityWeather"></div>
-            <p></p>
-
-        <div id = "5dayForecast" class = "">5-Day Forecast:</div>
-            <div id = "5days" class = ""></div>
+    <div id = "header" class = "bg-primary">
+        <h1 id = "header" class = "text-center"><i class="fas fa-cloud-sun"></i> Weather Dashboard <i class="fas fa-cloud-moon-rain"></i></h1> 
     </div>
+    <main class = "row">
+        <section id = "searchContainer" class = "card col-3">
+            <form id = "searchBar" class="">
+                <h2 class="card-header bg-info" for="searchCity">Search for a City</h2>
+                <input type="text" class="form-control card-body" id="searchCity" placeholder="City Name">
+                <button id = "searchButton" type="submit" class="btn btn-primary btn-block">Search</button>
+            </form>
+
+            <div id="searchHistory" class="card">
+                <h2 class="card-header bg-info">Previous Searches</h2>
+                <!-- Empty div to hold previous search buttons from script.js -->
+                <div class="card-body">
+                    <!-- empty div to add buttons for search history -->
+                </div>
+                <button id = "clearButton" type="click" class="btn btn-danger">Clear Search History</button>
+            </div>
+        </section>
+
+        <section id = "infoContainer" class = "card col-9">
+            <h2 id = "infoDisplay" class = "card-header bg-info">Showing weather information for: 
+                <span id ="cityId"></span> <span id = "date"></span> <img id="icon"></img>
+            </h2>
+            <div id = "weatherContainer" class = "card-body">
+                <p class="pt-1 pl-2">Temperature: <span id="temperature"></span>&deg;C</p>
+                <p class ="pl-2">Feels Like: <span id="feelsLike"></span>&deg;C</p>
+                <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
+                <p class="pl-2">Wind Speed: <span id="wind"></span> m/s</p>
+                <p class="pl-2">UV Index: <span id="uvIndex"></span> </p>
+            </div>
+            <h2 id = "forecastCardContainer" class = "card-header bg-info">5-Day Forecast:</h2>
+                <div id = "weatherCards" class = "row">
+                    <!-- empty div to add cards for next 5 days -->
+                </div>  
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
