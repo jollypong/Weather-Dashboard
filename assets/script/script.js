@@ -22,6 +22,18 @@ let historyEl = document.querySelector("#searchHistory");
 let weatherCards = document.querySelector("#weatherCards")
 
 //functions:-------------------------------------------------------------------------------
+//function to load parse search History
+function cityHistory (){ 
+    let previousCities = JSON.parse(localStorage.getItem("searchHistory"))
+        for (let i = 0; i <searchHistory.length; i++){ 
+            let searchButton = document.createElement("button");
+                searchButton.setAttribute("class", "m-2 btn btn-info"); 
+                searchButton.dataset.cityName = searchHistory[i]; 
+                searchButton.textContent = searchHistory[i];
+            console.log(searchHistory)
+        }
+        historyEl.append(searchButton);
+    } 
 
 //function for searching for city 
 let searchWeather = function(event){ 
@@ -34,6 +46,8 @@ let searchWeather = function(event){
         fetchWeather(cityName);
         searchHistory.push(cityName); //add cityName to searchHistory array
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));//save to localStorage
+        cityHistory(); 
+        console.log("made it here!")
         cityInputEl.value = "";
     }else { //display error if blank city search
         alert("Please enter a city name!")
@@ -58,7 +72,6 @@ let fetchWeather = function (cityName){
                 let weatherIcon = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png'
                 console.log(weatherIcon);
                 iconEl.src = weatherIcon
-                // iconEl.setAttribute("src", "weatherIcon")
                 //grab latitude and longitude from data
                 let long = data.coord.lon; 
                 // console.log(long)
@@ -102,7 +115,7 @@ let fetchWeather = function (cityName){
                         let forecastHumidity = data.daily[i].humidity;
 
                         let cardContent = //design elements for bootstrap for div below
-                            '<div class = "card bg-primary text-light mx-3 my-1" style="width: 15rem">' +
+                            '<div class = "card bg-primary text-light ml-10px mx-3 my-1" style="width: 15rem">' +
                                 '<h5 class = "card-header">' + forecastDate + '</h5>' +
                                 '<img clas = card-body src=' + forecastIcon + '></img>' + 
                                 '<p class = "card-body">Temperature:' + forecastTemp + '&deg;C</p>' +
@@ -120,16 +133,6 @@ let fetchWeather = function (cityName){
         };
     })
 }
-
-//function to load parse search History
-let previousCities = JSON.parse(localStorage.getItem("searchHistory"))
-    for (let i = 0; i <searchHistory.length; i++){ 
-        let searchButton = document.createElement("button");
-        searchButton.classList.add("m-2 btn btn-info"); 
-        searchButton.dataset.cityName = searchHistory[i]; 
-        searchButton.textContent = searchHistory[i];
-    }
-    historyEl.appendChild(searchButton);
 
 //function to clear history 
 function clearHistory(){
