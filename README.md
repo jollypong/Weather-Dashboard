@@ -1,13 +1,13 @@
 # Weather Dashboard
 
 ## Description
-This is a simple Weather Application created using HTML, CSS and JS. 
+This is a simple Weather Dashboard application created using HTML, CSS and JS. 
 <br/>
 Open Weather API was used to retrieve the weather information. 
-<br/>
+<br/><br/>
 You may use this application to check the weather quickly and concisely without having to view cluttered information. 
-<br/>
-
+<br/><br/>
+This application is exceptional for planning work week, planning trips, when travelling and restricted for data, and/or looking for the weather condition of the city your loved ones are located.  
 ## Using the application
 You may enter the City Name on the left side of the page. 
 <br/>
