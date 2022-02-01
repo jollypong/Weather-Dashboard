@@ -16,36 +16,37 @@ let windEl = document.querySelector("#wind");
 let uvEl = document.querySelector("#uvIndex");
 //elements used in function render searchHistory 
 let searchHistory = [];
+let addedHistoryCities = [];
 let clearButtonEl = document.querySelector("#clearButton");
 let historyEl = document.querySelector("#searchHistory");
 //elements used in function to create 5dayCard
 let weatherCards = document.querySelector("#weatherCards")
 
 //functions:-------------------------------------------------------------------------------
-//function to load parse search History
-function cityHistory (){ 
+//function to load/parse searchHistory
+function cityHistory() {
     let previousCities = JSON.parse(localStorage.getItem("searchHistory"))
-        for (let i = 0; i <searchHistory.length; i++){ 
+    for (let i = 0; i < searchHistory.length; i++) {
+        if (!addedHistoryCities.includes(searchHistory[i])) {
             let searchButton = document.createElement("button");
-                searchButton.setAttribute("class", "m-2 btn btn-info"); 
-                searchButton.dataset.cityName = searchHistory[i]; 
-                searchButton.textContent = searchHistory[i];
-            console.log(searchHistory)
+            searchButton.setAttribute("class", "newHistoryBtn m-2 btn btn-info");
+            searchButton.dataset.cityName = previousCities[i];
+            searchButton.textContent = previousCities[i];
+            historyEl.append(searchButton);
+            addedHistoryCities.push(searchHistory[i]);
         }
-        historyEl.append(searchButton);
-    } 
+    }
+}
 
 //function for searching for city 
 let searchWeather = function(event){ 
-    event.preventDefault(); 
-
+     
     let cityName = cityInputEl.value.trim();
-
     //display city searched!
     if (cityName){
         fetchWeather(cityName);
         searchHistory.push(cityName); //add cityName to searchHistory array
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));//save to localStorage
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));//save to localStorage for searchHistory
         cityHistory(); 
         console.log("made it here!")
         cityInputEl.value = "";
@@ -140,8 +141,20 @@ function clearHistory(){
     location.reload(); 
 }
 
+//button handler for history
+document.querySelector('#searchHistory').addEventListener('click', function(event) {
+    if (event.target.classList.contains('newHistoryBtn')) {
+        cityName = event.target.textContent;
+        fetchWeather(cityName);
+        console.log(cityName);
+    }
+});
+
 //button handler for clearButton
 clearButtonEl.addEventListener("click", clearHistory);
 
 //buttonhandler for "Search"
-searchBarEl.addEventListener("submit", searchWeather);
+searchBarEl.addEventListener("submit", function(event){
+    event.preventDefault();
+    searchWeather()
+})
