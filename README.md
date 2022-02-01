@@ -11,9 +11,9 @@ This application is exceptional for planning work week, planning trips, when tra
 ## Using the application
 You may enter the City Name on the left side of the page. 
 <br/>
-Upon entering the name of the city, your city's information will deploy on the right. 
+Upon submitting the name of the city, following information will appear on the right.
 <br/>
-Weather information displayed will contain: 
+- City Name, Date, Icon of the weather, 
 - Temperature in Celsius,
 - Feels like in Celsius,
 - Humidity in percentage,
