@@ -57,7 +57,7 @@ Repository contains:
   - reset.css
      
 ## Screenshots
-![screenshot](./Assets/images/screenshot.png)
+![screenshot](./assets/images/screenshot.png)
 
 ## Contribution
 Joe Lee @ https://github.com/jollypong
